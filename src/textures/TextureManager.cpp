@@ -14,9 +14,12 @@
 
 // Project Includes
 #include "TextureManager.h"
-
+#if !defined(WIN32)
 #include <unistd.h>
 #include <dirent.h>
+#else
+#include <msvc_dirent.h>
+#endif
 
 
 namespace GLPL {

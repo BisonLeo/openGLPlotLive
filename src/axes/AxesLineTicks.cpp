@@ -676,14 +676,14 @@ namespace GLPL {
     std::string AxesLineTicks::value2NeatStr(double inValue, unsigned int maxCharSuggestion, double expSwapover,
                                              unsigned int minDecimal) {
         // Setup buffer
-        unsigned int maxLen = 20;
+        const unsigned int maxLen = 20;
         char textBuf[maxLen];
         std::string text;
 
         if ((fabs(inValue) < expSwapover && fabs(inValue) >= 1.0/pow(10,maxCharSuggestion - 2)) || fabs(inValue) < 1e-15) {
             // Calculate the number of digits before the decimal point in standard format
             int mainDigits;
-            if (fabs(inValue) > 1e-15 and fabs(inValue) >= 1) {
+            if (fabs(inValue) > 1e-15 && fabs(inValue) >= 1) {
                 mainDigits = std::ceil(fabs(logWithBase(inValue, logBase)) + 1);
             } else {
                 mainDigits = 1;
@@ -832,7 +832,7 @@ namespace GLPL {
             // Create Text String
             std::string text = value2NeatStr(majorTickAxesPos[i], 4, 1000, 1);
             // Check that the label should not be the zero label
-            if ((axesDirection != X_AXES_CENTRE and axesDirection != Y_AXES_CENTRE) or text != "0.00") {
+            if ((axesDirection != X_AXES_CENTRE && axesDirection != Y_AXES_CENTRE) || text != "0.00") {
                 // Create text string
                 std::pair<float, float> labelPos = AxesLineTicks::generateTickLabelVerts(majorTickVerts[4 * i], majorTickVerts[4 * i + 1]);
                 // Check if a text string already exists

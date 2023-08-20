@@ -11,6 +11,10 @@ add_library(${PROJECT_NAME} "")
 target_sources(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/include/glad.c)
 target_include_directories(${PROJECT_NAME} SYSTEM PUBLIC ${CMAKE_SOURCE_DIR}/include)
 
+if(MSVC)
+target_compile_options(${PROJECT_NAME} PRIVATE /wd4244 /wd4464 /wd5045 /wd4820 /wd4265)
+endif()
+
 # Add subdirectories
 add_subdirectory(axes)
 add_subdirectory(dataTypes)
